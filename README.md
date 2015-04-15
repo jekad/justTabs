@@ -12,8 +12,9 @@ script type="text/javascript" src="jquery-1.11.1.min.js"
 
 script type="text/javascript" src="justTabs.js"
 
+**MARKUP:**
+
 ```html
-<h4>MARKUP:</h4>
 
     <div class="wrapper">
 
@@ -39,7 +40,7 @@ script type="text/javascript" src="justTabs.js"
             
         </ul>
         
-        <div class="content content_tabs">
+        <div class="content_tabs">
         
             <div class="content__tab" id="tab-0">
             </div>
@@ -63,6 +64,9 @@ script type="text/javascript" src="justTabs.js"
 
 you can add parameter {getActiveTabFromCookies: true} If you want to save active tab in cookies.
 
+    $(document).ready(function () {
+          $('.wrapper').justTabs({getActiveTabFromCookies: true});
+    });
 
 **METHODS**
     
