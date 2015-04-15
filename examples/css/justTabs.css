@@ -1,0 +1,63 @@
+ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,table,th,td{
+	margin: 0;
+	padding: 0;
+}
+table{
+   border-collapse: collapse;
+   border-spacing: 0;
+}
+ul,ol{ 
+	list-style: none;
+}
+a img,:link img,:visited img{ 
+	border:none;
+}
+.clearfix:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.page{
+    font-size: 12px;
+    font-family: Helvetica, Arial, sans-serif;
+    background: #f0f0f0;
+}
+.page__tabs{
+    width: 800px;
+    margin: 40px auto 0;
+}
+.nav__item{
+    display: inline-block;
+    margin-right: 2px;
+}
+.link_tabs{
+    display: block;
+    padding: 10px 10px 5px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #2a2a2a;
+    border-bottom: none;
+    text-decoration: none;
+    color: #2a2a2a;
+    background-color: #ccc;
+}
+.link_tabs_active{
+    color: #2a2a2a;
+    background-color: #f7f7f7;
+}
+.link_tabs_disable{
+    background-color: #959595;
+    color: #fff;
+    cursor: default;
+}
+.content_tabs{
+    padding: 15px;
+    border: 1px solid #2a2a2a;
+    background-color: #f7f7f7;
+}
+.content__tab{
+    display: none;
+}
+#tab-0{
+    display: block;
+}

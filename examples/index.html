@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>justTabs</title>
+	<link rel="stylesheet" href="css/justTabs.css" type="text/css" />
+
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/justTabs.js"></script>
+</head>
+<body class="page">
+	
+    <div class="page__tabs">
+        <ul class="just-tabs">
+            <li class="nav__item">
+                <a class="link link_tabs link_tabs_active" href="#">tab-1</a>
+            </li
+            ><li class="nav__item">
+                <a class="link link_tabs link_tabs_disable" href="#">tab-2</a>
+            </li
+            ><li class="nav__item">
+                <a class="link link_tabs" href="#">tab-3</a>
+            </li>
+            <li class="nav__item">
+            <a class="link link_tabs" href="#">tab-4</a>
+        </li>
+        </ul>
+        <div class="content content_tabs">
+            <div class="content__tab" id="tab-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquet nunc ac velit pretium pretium. Nam facilisis lacinia est, non egestas massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla at neque fringilla, placerat lorem sit amet, iaculis augue. Phasellus non risus a ligula consequat elementum. Curabitur vel accumsan felis. Vivamus eget eros eget orci semper consectetur eleifend placerat ante. Curabitur vel facilisis felis, nec luctus diam. Cras feugiat orci ac neque blandit interdum. Etiam sodales leo ac felis egestas lacinia. Sed cursus condimentum consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In scelerisque facilisis metus, ut consequat sapien dignissim at. Fusce eget ligula luctus, lobortis justo at, laoreet lorem.
+            </div>
+            <div class="content__tab" id="tab-1">
+                Sed at diam in mi maximus consequat sed a mauris. Etiam vitae consequat odio. Ut metus quam, euismod vel tempus vitae, maximus sed nunc. Vivamus tortor magna, varius id sagittis non, suscipit dapibus leo. Aliquam erat volutpat. Mauris in risus ante. Vivamus malesuada, nisi euismod suscipit venenatis, dolor mi sollicitudin odio, eget tincidunt mi leo sed risus. Donec pellentesque varius neque a bibendum. Curabitur malesuada ut augue sit amet feugiat
+            </div>
+            <div class="content__tab" id="tab-2">
+                Sed leo sem, tristique et ipsum quis, ultricies euismod ex. Maecenas feugiat condimentum condimentum. Ut cursus egestas metus, mattis interdum lorem tincidunt ut.
+            </div>
+            <div class="content__tab" id="tab-3">
+                Sed cursus condimentum consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In scelerisque facilisis metus, ut consequat sapien dignissim at. Fusce eget ligula luctus, lobortis justo at, laoreet lorem.
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.page__tabs').justTabs({getActiveTabFromCookies: true});
+        });
+    </script>
+</body>
+</html>    
