@@ -24,15 +24,15 @@ script type="text/javascript" src="justTabs.js"
             
                 <a class="link link_tabs link_tabs_active" href="#">tab-1</a>
                 
-            </li
+            </li>
             
-            ><li class="nav__item">
+            <li class="nav__item">
             
                 <a class="link link_tabs link_tabs_disable" href="#">tab-2</a>
                 
-            </li
+            </li>
             
-            ><li class="nav__item">
+            <li class="nav__item">
             
                 <a class="link link_tabs" href="#">tab-3</a>
                 
@@ -42,13 +42,13 @@ script type="text/javascript" src="justTabs.js"
         
         <div class="content_tabs">
         
-            <div class="content__tab" id="tab-0">
+            <div class="content__tab tab-0">
             </div>
             
-            <div class="content__tab" id="tab-1">
+            <div class="content__tab tab-1">
             </div>
             
-            <div class="content__tab" id="tab-2">
+            <div class="content__tab tab-2">
             </div>
             
         </div>

@@ -32,8 +32,8 @@
 
             function getCookie(name) {
                 var matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
+                    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                ));
                 return matches ? decodeURIComponent(matches[1]) : undefined;
             }
         },
@@ -51,7 +51,7 @@
             tabs.find('.just-tabs').find('.link_tabs').removeClass('link_tabs_active');
             tabs.find('.content_tabs').find('.content__tab').hide();
             $('[data-tab="' + index + '"]').addClass('link_tabs_active');
-            tabs.find('#' + 'tab-' + index).show();
+            tabs.find('.' + 'tab-' + index).show();
 
             document.cookie = 'justTabCurrent=' + index;
         },
@@ -71,7 +71,7 @@
         } else if ( typeof method === 'object' || ! method ) {
             return methods.init.apply( this, arguments );
         } else {
-            $.error( 'Метод ' +  method + ' не существует в jQuery.justTabs' );
+            $.error( 'Method ' +  method + ' don\'t exist in jQuery.justTabs' );
         }
     }
 })( jQuery );

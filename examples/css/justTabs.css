@@ -22,12 +22,16 @@ a img,:link img,:visited img{
     font-family: Helvetica, Arial, sans-serif;
     background: #f0f0f0;
 }
-.page__tabs{
-    width: 800px;
-    margin: 40px auto 0;
+.just-tabs{
+    margin-bottom: -1px;
+}
+.just-tabs:after{
+    content: '';
+    display: table;
+    clear: both;
 }
 .nav__item{
-    display: inline-block;
+    float: left;
     margin-right: 2px;
 }
 .link_tabs{
@@ -36,28 +40,32 @@ a img,:link img,:visited img{
     text-align: center;
     font-size: 16px;
     border: 1px solid #2a2a2a;
-    border-bottom: none;
     text-decoration: none;
     color: #2a2a2a;
     background-color: #ccc;
 }
+.link_tabs:focus, .link_tabs:hover{
+    text-decoration: none;
+    color: #2a2a2a;
+}
 .link_tabs_active{
     color: #2a2a2a;
     background-color: #f7f7f7;
+    border-bottom: 1px solid #f7f7f7;
 }
 .link_tabs_disable{
     background-color: #959595;
-    color: #fff;
     cursor: default;
 }
 .content_tabs{
     padding: 15px;
     border: 1px solid #2a2a2a;
     background-color: #f7f7f7;
+    color: #434343;
 }
 .content__tab{
     display: none;
 }
-#tab-0{
+.tab-0{
     display: block;
 }
