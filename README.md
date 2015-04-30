@@ -6,11 +6,9 @@ Supports IE8+
 To use this plugin you need to include a jquery, plugin library and css files.
 
 
-link rel="stylesheet" href="justTabs.css" type="text/css"
-
-script type="text/javascript" src="jquery-1.11.1.min.js"
-
-script type="text/javascript" src="justTabs.js"
+    <link rel="stylesheet" href="justTabs.css" type="text/css" />
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="justTabs.js"></script>
 
 **MARKUP:**
 
