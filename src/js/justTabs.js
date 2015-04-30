@@ -7,7 +7,7 @@
                 defaults = $.extend({getActiveTabFromCookies: false}, param),
                 current;
 
-            tabs.find('.nav__item').find('.link_tabs').each(function (i, el) {
+            tabs.children('.just-tabs').find('.link_tabs').each(function (i, el) {
                 $(el).attr('data-tab', i);
             });
 
@@ -20,7 +20,7 @@
             }
 
             //change tab event listener
-            tabs.find('.link_tabs').on('click.jt', function (event) {
+            tabs.children('.just-tabs').find('.link_tabs').on('click.jt', function (event) {
 
                 if ( !$(event.target).is('.link_tabs_active') && !$(event.target).is('.link_tabs_disable') ) {
                     var tabID = $(event.target).attr('data-tab');
@@ -40,7 +40,7 @@
 
         getCurrentTab: function () {
             var tabs = this,
-                index = tabs.find('.just-tabs').find('.link_tabs_active').attr('data-tab');
+                index = tabs.children('.just-tabs').find('.link_tabs_active').attr('data-tab');
 
             return +index;
         },
@@ -48,20 +48,22 @@
         selectTab: function (index) {
             var tabs = this;
 
-            tabs.find('.just-tabs').find('.link_tabs').removeClass('link_tabs_active');
-            tabs.find('.content_tabs').find('.content__tab').hide();
-            $('[data-tab="' + index + '"]').addClass('link_tabs_active');
-            tabs.find('.' + 'tab-' + index).show();
+            tabs.children('.just-tabs').find('.link_tabs').removeClass('link_tabs_active');
+            tabs.children('.content_tabs').children('.content__tab').hide();
+            tabs.children('.just-tabs').find('[data-tab="' + index + '"]').addClass('link_tabs_active');
+            tabs.children('.content_tabs').children('.' + 'tab-' + index).show();
 
             document.cookie = 'justTabCurrent=' + index;
         },
 
         disableTab: function (index) {
-            $('[data-tab="' + index + '"]').addClass('link_tabs_disable');
+            var tabs = this;
+            tabs.children('.just-tabs').find('[data-tab="' + index + '"]').addClass('link_tabs_disable');
         },
 
         enableTab: function (index) {
-            $('[data-tab="' + index + '"]').removeClass('link_tabs_disable');
+            var tabs = this;
+            tabs.children('.just-tabs').find('[data-tab="' + index + '"]').removeClass('link_tabs_disable');
         }
     };
 
