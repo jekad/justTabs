@@ -5,9 +5,10 @@
         init: function (param) {
             var tabs = this,
                 defaults = $.extend({getActiveTabFromCookies: false}, param),
-                current;
+                current,
+                tabsNavLink = tabs.children('.just-tabs').find('.link_tabs');
 
-            tabs.children('.just-tabs').find('.link_tabs').each(function (i, el) {
+            tabsNavLink.each(function (i, el) {
                 $(el).attr('data-tab', i);
             });
 
@@ -20,7 +21,7 @@
             }
 
             //change tab event listener
-            tabs.children('.just-tabs').find('.link_tabs').on('click.jt', function (event) {
+            tabsNavLink.on('click.jt', function (event) {
 
                 if ( !$(event.target).is('.link_tabs_active') && !$(event.target).is('.link_tabs_disable') ) {
                     var tabID = $(event.target).attr('data-tab');
@@ -46,12 +47,14 @@
         },
 
         selectTab: function (index) {
-            var tabs = this;
+            var tabs = this,
+                tabsNav = tabs.children('.just-tabs'),
+                tabsWrap = tabs.children('.content_tabs');
 
-            tabs.children('.just-tabs').find('.link_tabs').removeClass('link_tabs_active');
-            tabs.children('.content_tabs').children('.content__tab').hide();
-            tabs.children('.just-tabs').find('[data-tab="' + index + '"]').addClass('link_tabs_active');
-            tabs.children('.content_tabs').children('.' + 'tab-' + index).show();
+            tabsNav.find('.link_tabs').removeClass('link_tabs_active');
+            tabsWrap.children('.content__tab').hide();
+            tabsNav.find('[data-tab="' + index + '"]').addClass('link_tabs_active');
+            tabsWrap.children('.' + 'tab-' + index).show();
 
             document.cookie = 'justTabCurrent=' + index;
         },

@@ -35,6 +35,11 @@ To use this plugin you need to include a jquery, plugin library and css files.
     </div>
 ```
 
+If you want to add several tabs on the page, change tabs wrapper class
+
+    <div class="tabs-wrapper-2">
+    ...
+
 **INITIALIZATION**
 
     $(document).ready(function () {
