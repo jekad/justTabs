@@ -9,12 +9,18 @@ To use this plugin you need to include a jquery, plugin library and css files.
     <link rel="stylesheet" href="justTabs.css" type="text/css" />
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="justTabs.js"></script>
+    
+also if you need a vertical tab add 
+    
+    <link rel="stylesheet" href="justTabs_vertical.css" type="text/css" />
+    
+instead of justTabs.css
 
 **MARKUP:**
 
 ```html
 
-    <div class="wrapper">
+    <div class="jt-wrapper clearfix">
         <ul class="just-tabs">
             <li class="nav__item">
                 <a class="link link_tabs link_tabs_active" href="#">tab-1</a>
@@ -37,30 +43,30 @@ To use this plugin you need to include a jquery, plugin library and css files.
 
 If you want to add several tabs on the page, change tabs wrapper class
 
-    <div class="tabs-wrapper-2">
+    <div class="jt-wrapper-2">
     ...
 
 **INITIALIZATION**
 
     $(document).ready(function () {
-          $('.wrapper').justTabs();
+          $('.jt-wrapper').justTabs();
     });
 
-you can add parameter {getActiveTabFromCookies: true} If you want to save active tab in cookies.
+you can add parameter {saveTabInStorage: true} If you want to save active tab in local storage.
 
     $(document).ready(function () {
-          $('.wrapper').justTabs({getActiveTabFromCookies: true});
+          $('.jt-wrapper').justTabs({saveTabInStorage: true});
     });
 
 **METHODS**
     
-    $('.wrapper').justTabs('getCurrentTab');
+    $('.jt-wrapper').justTabs('getCurrentTab');
     
-    $('.wrapper').justTabs('selectTab', n);
+    $('.jt-wrapper').justTabs('selectTab', n);
 
-    $('.wrapper').justTabs('disableTab', n);
+    $('.jt-wrapper').justTabs('disableTab', n);
 
-    $('.wrapper').justTabs('enableTab', n);
+    $('.jt-wrapper').justTabs('enableTab', n);
 
 n - number of tab (start from 0)
 

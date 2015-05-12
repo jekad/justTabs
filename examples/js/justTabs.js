@@ -1,10 +1,18 @@
 (function ( $ ) {
 
+    function supportsLocalStorage() {
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+            return false;
+        }
+    }
+
     var methods = {
 
         init: function (param) {
             var tabs = this,
-                defaults = $.extend({getActiveTabFromCookies: false}, param),
+                defaults = $.extend({saveTabInStorage: false}, param),
                 current,
                 tabsNavLink = tabs.children('.just-tabs').find('.link_tabs');
 
@@ -12,16 +20,20 @@
                 $(el).attr('data-tab', i);
             });
 
-            //set active tab from cookies
-            if (defaults.getActiveTabFromCookies) {
-                current = getCookie('justTabCurrent');
-                if (current) {
-                    $(tabs).justTabs('selectTab', current);
+            //set active tab from storage
+            if (defaults.saveTabInStorage) {
+                if ( !supportsLocalStorage() ) {
+                    return false;
+                } else {
+                    current = localStorage.getItem('justTabCurrent' + tabs.selector);
+                    if (current) {
+                        $(tabs).justTabs('selectTab', current);
+                    }
                 }
             }
 
             //change tab event listener
-            tabsNavLink.on('click.jt', function (event) {
+            tabsNavLink.on('click', function (event) {
 
                 if ( !$(event.target).is('.link_tabs_active') && !$(event.target).is('.link_tabs_disable') ) {
                     var tabID = $(event.target).attr('data-tab');
@@ -30,13 +42,6 @@
                 }
                 return false;
             });
-
-            function getCookie(name) {
-                var matches = document.cookie.match(new RegExp(
-                    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-                ));
-                return matches ? decodeURIComponent(matches[1]) : undefined;
-            }
         },
 
         getCurrentTab: function () {
@@ -56,7 +61,11 @@
             tabsNav.find('[data-tab="' + index + '"]').addClass('link_tabs_active');
             tabsWrap.children('.' + 'tab-' + index).show();
 
-            document.cookie = 'justTabCurrent=' + index;
+            if ( !supportsLocalStorage() ) {
+                return false;
+            } else {
+                localStorage.setItem('justTabCurrent' + tabs.selector, index);
+            }
         },
 
         disableTab: function (index) {
