@@ -9,12 +9,6 @@ To use this plugin you need to include a jquery, plugin library and css files.
     <link rel="stylesheet" href="justTabs.css" type="text/css" />
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="justTabs.js"></script>
-    
-also if you need a vertical tab add 
-    
-    <link rel="stylesheet" href="justTabs_vertical.css" type="text/css" />
-    
-instead of justTabs.css
 
 **MARKUP:**
 
@@ -52,10 +46,18 @@ If you want to add several tabs on the page, change tabs wrapper class
           $('.jt-wrapper').justTabs();
     });
 
-you can add parameter {saveTabInStorage: true} If you want to save active tab in local storage.
+**PARAMETERS**
+
+saveTabInStorage: true. If you want to save active tab in local storage.
 
     $(document).ready(function () {
           $('.jt-wrapper').justTabs({saveTabInStorage: true});
+    });
+    
+vertical: true and width of tab nav in px (by default 150px). If you need vertical tabs.
+
+    $(document).ready(function () {
+          $('.jt-wrapper').justTabs({vertical: true, width: '200px'});
     });
 
 **METHODS**

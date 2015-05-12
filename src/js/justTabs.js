@@ -12,13 +12,27 @@
 
         init: function (param) {
             var tabs = this,
-                defaults = $.extend({saveTabInStorage: false}, param),
+                options = {
+                    saveTabInStorage: false,
+                    vertical: false,
+                    width: '150px'
+                },
+                defaults = $.extend(options, param),
                 current,
-                tabsNavLink = tabs.children('.just-tabs').find('.link_tabs');
+                tabsNav = tabs.children('.just-tabs'),
+                tabsNavLink = tabsNav.find('.link_tabs');
 
             tabsNavLink.each(function (i, el) {
                 $(el).attr('data-tab', i);
             });
+
+            //cahange style, if set vertical tabs
+            if (defaults.vertical) {
+                tabsNavLink.css({'width': defaults.width});
+                tabsNav.css({'float': 'left'});
+                tabsNav.find('.nav__item').css({'float': 'none'});
+                tabs.children('.content_tabs').css({'margin-left': defaults.width});
+            }
 
             //set active tab from storage
             if (defaults.saveTabInStorage) {
