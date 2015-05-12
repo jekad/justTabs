@@ -1,26 +1,53 @@
 (function ( $ ) {
 
+    function supportsLocalStorage() {
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+            return false;
+        }
+    }
+
     var methods = {
 
         init: function (param) {
             var tabs = this,
-                defaults = $.extend({getActiveTabFromCookies: false}, param),
-                current;
+                options = {
+                    saveTabInStorage: false,
+                    vertical: false,
+                    width: '150px'
+                },
+                defaults = $.extend(options, param),
+                current,
+                tabsNav = tabs.children('.just-tabs'),
+                tabsNavLink = tabsNav.find('.link_tabs');
 
-            tabs.children('.just-tabs').find('.link_tabs').each(function (i, el) {
+            tabsNavLink.each(function (i, el) {
                 $(el).attr('data-tab', i);
             });
 
-            //set active tab from cookies
-            if (defaults.getActiveTabFromCookies) {
-                current = getCookie('justTabCurrent');
-                if (current) {
-                    $(tabs).justTabs('selectTab', current);
+            //cahange style, if set vertical tabs
+            if (defaults.vertical) {
+                tabsNavLink.css({'width': defaults.width});
+                tabsNav.css({'float': 'left'});
+                tabsNav.find('.nav__item').css({'float': 'none'});
+                tabs.children('.content_tabs').css({'margin-left': defaults.width});
+            }
+
+            //set active tab from storage
+            if (defaults.saveTabInStorage) {
+                if ( !supportsLocalStorage() ) {
+                    return false;
+                } else {
+                    current = localStorage.getItem('justTabCurrent' + tabs.selector);
+                    if (current) {
+                        $(tabs).justTabs('selectTab', current);
+                    }
                 }
             }
 
             //change tab event listener
-            tabs.children('.just-tabs').find('.link_tabs').on('click.jt', function (event) {
+            tabsNavLink.on('click', function (event) {
 
                 if ( !$(event.target).is('.link_tabs_active') && !$(event.target).is('.link_tabs_disable') ) {
                     var tabID = $(event.target).attr('data-tab');
@@ -29,13 +56,6 @@
                 }
                 return false;
             });
-
-            function getCookie(name) {
-                var matches = document.cookie.match(new RegExp(
-                    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-                ));
-                return matches ? decodeURIComponent(matches[1]) : undefined;
-            }
         },
 
         getCurrentTab: function () {
@@ -46,14 +66,20 @@
         },
 
         selectTab: function (index) {
-            var tabs = this;
+            var tabs = this,
+                tabsNav = tabs.children('.just-tabs'),
+                tabsWrap = tabs.children('.content_tabs');
 
-            tabs.children('.just-tabs').find('.link_tabs').removeClass('link_tabs_active');
-            tabs.children('.content_tabs').children('.content__tab').hide();
-            tabs.children('.just-tabs').find('[data-tab="' + index + '"]').addClass('link_tabs_active');
-            tabs.children('.content_tabs').children('.' + 'tab-' + index).show();
+            tabsNav.find('.link_tabs').removeClass('link_tabs_active');
+            tabsWrap.children('.content__tab').hide();
+            tabsNav.find('[data-tab="' + index + '"]').addClass('link_tabs_active');
+            tabsWrap.children('.' + 'tab-' + index).show();
 
-            document.cookie = 'justTabCurrent=' + index;
+            if ( !supportsLocalStorage() ) {
+                return false;
+            } else {
+                localStorage.setItem('justTabCurrent' + tabs.selector, index);
+            }
         },
 
         disableTab: function (index) {
