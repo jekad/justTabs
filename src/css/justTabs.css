@@ -1,3 +1,8 @@
+.clearfix:after{
+    content: '';
+    display: table;
+    clear: both;
+}
 .just-tabs{
     margin-bottom: -1px;
 }
