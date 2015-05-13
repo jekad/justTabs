@@ -47,6 +47,7 @@ a img,:link img,:visited img{
 .link_tabs:focus, .link_tabs:hover{
     text-decoration: none;
     color: #2a2a2a;
+    outline: none;
 }
 .link_tabs_active{
     color: #2a2a2a;
